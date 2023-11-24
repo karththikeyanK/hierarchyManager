@@ -59,7 +59,7 @@ public class CustomerFacade {
                     if (existingCustomerResponse != null) {
                         if (!existingCustomerResponse.getName().equals(customerRequest.getName())) {
                             log.info("OrganizationFacade.createOrganizationAndCompanyAndCustomer()::: {} Customer already exists", existingCustomerResponse.getName());
-                            throw new GeneralBusinessException("Mobile number already exists with different name");
+                            throw new GeneralBusinessException("Mobile number -- "+customerRequest.getContactNo()+" already exists in your input or db with different Mobile Number");
                         }
                         companyIdsList.addAll(existingCustomerResponse.getCompanyIds());
                         companyIdsList.add(companyResponse.getId());
