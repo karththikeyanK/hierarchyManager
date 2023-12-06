@@ -51,3 +51,5 @@ The application provides a set of well-defined endpoints that leverage the facad
 * GET `/api/v1/organization/getOrganizationAndCompanyAndCustomer/{organizationId}` - Fetch organization details, associated companies, and customers.
 
 * POST `/api/v1/organization/createOrganizationAndCompanyAndCustomer` - Establish relationships between organization, company, and customers.
+  
+* etc..............
