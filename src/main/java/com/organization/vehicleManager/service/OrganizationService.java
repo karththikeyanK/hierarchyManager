@@ -23,9 +23,6 @@ public class OrganizationService {
     public OrganizationResponse createOrganization(OrganizationRequest organizationRequest) {
         log.info("Organization Service: Creating organization started");
         try{
-            if (organizationRequest.getName().isEmpty() || organizationRequest.getRegNo().isEmpty() || organizationRequest.getName() == null || organizationRequest.getRegNo() == null || organizationRequest.getContact() == null || organizationRequest.getAddress() == null || organizationRequest.getContact().isEmpty() || organizationRequest.getAddress().isEmpty()){
-                throw new GeneralBusinessException("Organization name or registration number or contact or address cannot be empty");
-            }
 
             if (organizationRepository.existsByName(organizationRequest.getName())){
                 log.error("Organization Service: Organization name already exists");
@@ -156,6 +153,29 @@ public class OrganizationService {
             throw ex;
         }
     }
+
+//    public OrganizationResponse customQuery(String query){
+//        try{
+//            log.info("Organization Service: Custom query started");
+//            Organization org = organizationRepository.findByCustomQuery(query);
+//            log.info("Organization Service: Custom query completed");
+//            if (org == null) {
+//                log.error("Organization Service: No organizations found");
+//                throw new GeneralBusinessException("No organizations found");
+//            }
+//
+//            OrganizationResponse organizationResponse = OrganizationDtoMapper.convertToResponse(org);
+//            return organizationResponse;
+//        }
+//        catch (GeneralBusinessException ex){
+//            log.error("Organization Service: Error while custom query: "+ ex.getMessage());
+//            throw ex;
+//        }catch (Exception ex){
+//            log.error("Organization Service: Unexpected error while custom query: "+ ex.getMessage());
+//            throw ex;
+//        }
+//
+//    }
 
 
 }

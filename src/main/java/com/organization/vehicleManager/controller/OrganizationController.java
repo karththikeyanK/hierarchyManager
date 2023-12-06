@@ -160,5 +160,19 @@ public class OrganizationController {
         }
     }
 
+//    @GetMapping("/customQuery")
+//    public ResponseEntity<ApiResponse> customQuery(@RequestBody String query){
+//        try{
+//            return ResponseEntity.ok().body( new ApiResponse<>(ApiResponse.SUCCESS, "Custom query executed successfully", organizationService.customQuery(query)));
+//        }catch (GeneralBusinessException e){
+//            log.error("OrganizationController::General Exception:Error while executing custom query: ", e);
+//            return ResponseEntity.badRequest().body(new ApiResponse<>(ApiResponse.ERROR, e.getMessage(), null));
+//        }
+//        catch (Exception e){
+//            log.error("Unexpected error while executing custom query: ", e);
+//            return ResponseEntity.badRequest().body(new ApiResponse<>(ApiResponse.ERROR, e.getMessage(), null));
+//        }
+//    }
+
 
 }
