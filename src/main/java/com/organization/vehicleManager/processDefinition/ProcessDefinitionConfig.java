@@ -21,7 +21,6 @@ public class ProcessDefinitionConfig {
                 .deploy();
     }
 
-
     private BpmnModelInstance createOrganizationAddingProcess() {
         return Bpmn.createExecutableProcess("OrganizationAddingData")
                 .camundaHistoryTimeToLive(30)
@@ -33,11 +32,11 @@ public class ProcessDefinitionConfig {
 
                 .userTask("EnterCompanyDetails").name("Enter Company Details")
                 .serviceTask("ProcessCompanyDetails").name("Process Company Details")
-                .camundaDelegateExpression("${oaProcessCompanyDetailsDelegate}")
+                .camundaDelegateExpression("${oaProcessCompanyDetailsController}")
 
                 .userTask("EnterCustomerDetails").name("Enter Customer Details")
                 .serviceTask("ProcessCustomerDetails").name("Process Customer Details")
-                .camundaDelegateExpression("${oaProcessCustomerDetailsDelegate}")
+                .camundaDelegateExpression("${oaProcessCustomerDetailsController}")
 
                 .endEvent("AddingOrganizationDataComplete")
                 .done();

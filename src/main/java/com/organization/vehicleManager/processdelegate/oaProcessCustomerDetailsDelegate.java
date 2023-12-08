@@ -25,7 +25,7 @@ public class oaProcessCustomerDetailsDelegate implements JavaDelegate {
         try{
             CustomerRequest customerRequest = extractOrganizationRequest(execution);
             CustomerResponse customerResponse = customerService.createCustomer(customerRequest);
-            execution.setVariable("organizationId", customerResponse.getId());
+            execution.setVariable("customerId", customerResponse.getId());
             execution.setVariable("customerCreateSuccessful", true);
         } catch(Exception e){
             log.error("Error while processing company details", e);

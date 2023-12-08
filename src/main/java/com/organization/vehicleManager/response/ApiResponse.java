@@ -1,14 +1,12 @@
 package com.organization.vehicleManager.response;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class ApiResponse<T> {
     public static final String SUCCESS = "SUCCESS";
     public static final String WARNING = "WARNING";

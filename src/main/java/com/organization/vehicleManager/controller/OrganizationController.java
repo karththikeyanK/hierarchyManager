@@ -8,24 +8,20 @@ import com.organization.vehicleManager.facade.CustomerFacade;
 import com.organization.vehicleManager.facade.OrganizationFacade;
 import com.organization.vehicleManager.response.ApiResponse;
 import com.organization.vehicleManager.service.OrganizationService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Slf4j
 @RequestMapping("api/v1/organization")
+@RequiredArgsConstructor
 public class OrganizationController {
 
-    @Autowired
-    private OrganizationService organizationService;
-
-    @Autowired
-    private OrganizationFacade organizationFacade;
-
-    @Autowired
-    private CustomerFacade customerFacade;
+    private final OrganizationService organizationService;
+    private final OrganizationFacade organizationFacade;
+    private final CustomerFacade customerFacade;
 
 
     @PostMapping("/create")
