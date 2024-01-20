@@ -52,7 +52,7 @@ public class oaOrganizationAddingDataController {
             log.info("OrganizationAddingDataController:completeEnterOrganizationDetails():: Task completed successfully");
             ApiResponse<String> apiResponse = ApiResponse.<String>builder()
                     .status("success")
-                    .data("Enter Basic Details task completed successfully.")
+                    .data("Enter Organization Details task completed successfully.")
                     .build();
             return ResponseEntity.ok(apiResponse);
         } catch (BpmnError ex) {

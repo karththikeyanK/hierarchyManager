@@ -20,6 +20,8 @@ public class CustomerDtoMapper {
                 .name(customerRequest.getName())
                 .address(customerRequest.getAddress())
                 .contactNumber(customerRequest.getContactNo())
+                .verified(customerRequest.getVerified())
+                .reason(customerRequest.getReason())
                 .build();
         log.info("CustomerDtoMapper::Set<Company> companies started");
         customerRequest.getCompanyIds().forEach(companyId -> {
@@ -41,6 +43,8 @@ public class CustomerDtoMapper {
         customerResponse.setName(customer.getName());
         customerResponse.setAddress(customer.getAddress());
         customerResponse.setContactNo(customer.getContactNumber());
+        customerResponse.setVerified(customer.getVerified());
+        customerResponse.setReason(customer.getReason());
         List<String> companyNames = new ArrayList<>();
         List<Integer> companyIds = new ArrayList<>();
 

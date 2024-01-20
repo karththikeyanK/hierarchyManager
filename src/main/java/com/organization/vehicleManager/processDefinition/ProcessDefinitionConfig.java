@@ -32,12 +32,21 @@ public class ProcessDefinitionConfig {
 
                 .userTask("EnterCompanyDetails").name("Enter Company Details")
                 .serviceTask("ProcessCompanyDetails").name("Process Company Details")
-                .camundaDelegateExpression("${oaProcessCompanyDetailsController}")
+                .camundaDelegateExpression("${oaProcessCompanyDetailsDelegate}")
 
                 .userTask("EnterCustomerDetails").name("Enter Customer Details")
                 .serviceTask("ProcessCustomerDetails").name("Process Customer Details")
-                .camundaDelegateExpression("${oaProcessCustomerDetailsController}")
+                .camundaDelegateExpression("${oaProcessCustomerDetailsDelegate}")
 
+                .exclusiveGateway("customerVerifiedCheck")
+                .condition("verifiedSuccessful", "#{verifiedStatus == 'success'}")
+                .endEvent("journeyComplete")
+
+                .moveToLastGateway()
+                .condition("customerRejected", "#{verifiedStatus == 'rejected'}")
+                .userTask("EnterCustomerDetailsAgain").name("Enter Customer Details Again")
+                .serviceTask("ProcessCustomerDetailsAgain").name("Process Customer Details Again")
+                .camundaDelegateExpression("${oaProcessAgainCustomerDetailsDelegate}")
                 .endEvent("AddingOrganizationDataComplete")
                 .done();
     }

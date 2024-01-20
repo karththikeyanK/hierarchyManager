@@ -14,6 +14,8 @@ public class CustomerResponse {
     private String name;
     private String contactNo;
     private String address;
+    private Boolean verified;
+    private String reason;
     private List<String> companyNames;
     private List<Integer> companyIds;
 }

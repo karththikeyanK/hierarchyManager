@@ -32,6 +32,12 @@ public class Customer {
     @Column(name = "contact_number", nullable = false)
     private String contactNumber;
 
+    @Column(name = "verified")
+    private Boolean verified;
+
+    @Column(name = "reason")
+    private String reason;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "Customer_Company",

@@ -12,7 +12,9 @@ The application is developed using the following technologies and frameworks:
 
 * Java
 * Spring Boot
+* Camunda
 * Lombok
+* Facade
 * Swagger 3
 * MySQL
 * Other relevant dependencies used in the project

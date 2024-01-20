@@ -23,10 +23,15 @@ public class oaProcessCustomerDetailsDelegate implements JavaDelegate {
     @Override
     public void execute(DelegateExecution execution) throws Exception {
         try{
-            CustomerRequest customerRequest = extractOrganizationRequest(execution);
+            CustomerRequest customerRequest = extractCustomerRequest(execution);
             CustomerResponse customerResponse = customerService.createCustomer(customerRequest);
             execution.setVariable("customerId", customerResponse.getId());
             execution.setVariable("customerCreateSuccessful", true);
+            if (customerRequest.getVerified()){
+                execution.setVariable("verifiedStatus", "success");
+            }else {
+                execution.setVariable("verifiedStatus", "rejected");
+            }
         } catch(Exception e){
             log.error("Error while processing company details", e);
             execution.setVariable("customerCreateSuccessful", false);
@@ -34,7 +39,7 @@ public class oaProcessCustomerDetailsDelegate implements JavaDelegate {
         }
     }
 
-    private CustomerRequest extractOrganizationRequest(DelegateExecution execution) {
+    private CustomerRequest extractCustomerRequest(DelegateExecution execution) {
         CustomerRequest customerRequest = (CustomerRequest) execution.getVariable("customerRequestDto");
         if (customerRequest == null) {
             throw new BpmnError("NO_CUSTOMER_DATA", "No customer data provided");
